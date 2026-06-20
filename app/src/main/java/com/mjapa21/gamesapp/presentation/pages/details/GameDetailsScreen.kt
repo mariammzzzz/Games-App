@@ -1,4 +1,4 @@
-package com.mjapa21.gamesapp.presentation.pages
+package com.mjapa21.gamesapp.presentation.pages.details
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text

@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.mjapa21.gamesapp.presentation.pages.GameDetailsScreen
-import com.mjapa21.gamesapp.presentation.pages.GameListScreen
+import com.mjapa21.gamesapp.presentation.pages.details.GameDetailsScreen
+import com.mjapa21.gamesapp.presentation.pages.gamelist.GameListScreen
 
 
 @Composable
