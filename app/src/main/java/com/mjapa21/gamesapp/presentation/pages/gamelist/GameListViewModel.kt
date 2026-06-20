@@ -6,16 +6,31 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mjapa21.gamesapp.data.RetrofitInstance
-import com.mjapa21.gamesapp.data.model.GamesListItem
 import kotlinx.coroutines.launch
 
 class GameListViewModel : ViewModel() {
-    var games by mutableStateOf(emptyList<GamesListItem>())
+    var uiState by mutableStateOf<GameListUiState>(GameListUiState.Loading)
+        private set
 
     init {
+        fetchGames()
+    }
+
+
+    fun onTryAgainClick() {
+        fetchGames()
+    }
+
+    fun fetchGames() {
         viewModelScope.launch {
-            val gamesApi = RetrofitInstance.createGamesApi()
-            games = gamesApi.getGamesList()
+            uiState = GameListUiState.Loading
+            uiState = try {
+                val gamesApi = RetrofitInstance.createGamesApi()
+                val games = gamesApi.getGamesList()
+                GameListUiState.Success(games)
+            } catch (e: Exception) {
+                GameListUiState.Error("Error occured. please try again")
+            }
         }
     }
 }

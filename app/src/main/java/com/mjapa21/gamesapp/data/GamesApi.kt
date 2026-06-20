@@ -6,7 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface GamesApi {
-
     @GET("games")
     suspend fun getGamesList(): List<GamesListItem>
 
@@ -14,5 +13,4 @@ interface GamesApi {
     suspend fun getGameDetails(
         @Query("id") gameId: Int
     ): GameDetails
-
 }
