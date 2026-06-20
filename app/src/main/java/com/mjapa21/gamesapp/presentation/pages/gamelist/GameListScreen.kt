@@ -42,7 +42,9 @@ fun GameListScreen(onGameClick: (Int) -> Unit, viewModel: GameListViewModel = vi
             items(viewModel.games.size) {
                 val game = viewModel.games[it]
 
-                Row(modifier = Modifier.fillMaxWidth()) {
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onGameClick(game.id) }) {
                     Column(
                         modifier = Modifier
                             .weight(2f)
@@ -74,6 +76,4 @@ fun GameListScreen(onGameClick: (Int) -> Unit, viewModel: GameListViewModel = vi
             }
         }
     }
-
-
 }

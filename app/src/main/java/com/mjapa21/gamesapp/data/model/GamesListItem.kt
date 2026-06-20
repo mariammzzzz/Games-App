@@ -1,4 +1,4 @@
-package com.mjapa21.gamesapp.data.mode
+package com.mjapa21.gamesapp.data.model
 
 data class GamesListItem(
     val id: Int,

@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mjapa21.gamesapp.data.RetrofitInstance
-import com.mjapa21.gamesapp.data.mode.GamesListItem
+import com.mjapa21.gamesapp.data.model.GamesListItem
 import kotlinx.coroutines.launch
 
 class GameListViewModel : ViewModel() {

@@ -21,7 +21,7 @@ fun MainNavigationRoot() {
                 })
             }
 
-            is Destinations.GameDetails -> NavEntry(navKey) { GameDetailsScreen() } //TODO PASS THE ID LATER
+            is Destinations.GameDetails -> NavEntry(navKey) { GameDetailsScreen(navKey.gameId) }
             else -> throw IllegalStateException("Unknown destination: $navKey")
         }
     }
