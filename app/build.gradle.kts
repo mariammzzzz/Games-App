@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
 
-    kotlin("plugin.serialization") version "2.4.0"
+    kotlin("plugin.serialization") version "2.4.0" // Add this line for Kotlin serialization
 }
 
 android {
@@ -60,8 +60,16 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
+    // Retrofit for api calls
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
-    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0") //gson converter
+
+
+    // viewmodel
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
+
+    // Coil for image loading
+    implementation("io.coil-kt.coil3:coil-compose:3.1.0") //i had 3.5.0 version but i had errors while building the project (i guess it needed newer version of kotlin) so i downgraded to 3.1.0 and it worked fine)
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
 
 }
