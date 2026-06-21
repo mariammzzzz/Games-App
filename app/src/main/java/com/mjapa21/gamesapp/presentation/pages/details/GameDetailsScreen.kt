@@ -16,7 +16,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -34,6 +33,8 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.mjapa21.gamesapp.data.RetrofitInstance
 import com.mjapa21.gamesapp.data.model.GameDetails
+import com.mjapa21.gamesapp.presentation.theme.AccentViolet
+import com.mjapa21.gamesapp.presentation.theme.AppFont
 
 
 @Composable
@@ -60,6 +61,7 @@ fun GameDetailsScreen(gameId: Int) {
             // ── Title ──────────────────────────────────────────────────
             Text(
                 text = game.title,
+                fontFamily = AppFont,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(16.dp)
@@ -85,8 +87,8 @@ fun GameDetailsScreen(gameId: Int) {
             // ── Description ────────────────────────────────────────────
             Text(
                 text = game.description,
+                fontFamily = AppFont,
                 fontSize = 14.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(16.dp)
             )
 
@@ -94,6 +96,7 @@ fun GameDetailsScreen(gameId: Int) {
             Text(
                 text = "Minimum System Requirements",
                 fontSize = 18.sp,
+                fontFamily = AppFont,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
             )
@@ -129,6 +132,7 @@ private fun RequirementRow(label: String, value: String) {
     ) {
         Text(
             text = label,
+            fontFamily = AppFont,
             fontWeight = FontWeight.Medium,
             fontSize = 13.sp,
             modifier = Modifier.weight(1f)
@@ -136,9 +140,8 @@ private fun RequirementRow(label: String, value: String) {
         Text(
             text = value,
             fontSize = 13.sp,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.weight(2f)
         )
     }
-    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+    HorizontalDivider(color = AccentViolet)
 }
