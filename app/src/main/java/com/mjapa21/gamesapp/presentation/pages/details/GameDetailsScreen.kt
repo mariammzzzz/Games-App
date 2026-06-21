@@ -28,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
@@ -89,31 +90,34 @@ fun GameDetailsScreen(gameId: Int) {
                 text = game.description,
                 fontFamily = AppFont,
                 fontSize = 14.sp,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(16.dp),
+                maxLines = 20,
+                overflow = TextOverflow.Ellipsis
             )
 
-            // ── System requirements ────────────────────────────────────
-            Text(
-                text = "Minimum System Requirements",
-                fontSize = 18.sp,
-                fontFamily = AppFont,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-            )
+            game.minimum_system_requirements?.let {
 
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    with(game.minimum_system_requirements) {
-                        RequirementRow("OS", os)
-                        RequirementRow("Processor", processor)
-                        RequirementRow("Memory", memory)
-                        RequirementRow("Graphics", graphics)
-                        RequirementRow("Storage", storage)
+                // ── System requirements ────────────────────────────────────
+                Text(
+                    text = "Minimum System Requirements",
+                    fontSize = 18.sp,
+                    fontFamily = AppFont,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                )
+
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        RequirementRow("OS", it.os)
+                        RequirementRow("Processor", it.processor)
+                        RequirementRow("Memory", it.memory)
+                        RequirementRow("Graphics", it.graphics)
+                        RequirementRow("Storage", it.storage)
                     }
                 }
             }
